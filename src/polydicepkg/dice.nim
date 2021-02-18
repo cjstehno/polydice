@@ -11,19 +11,17 @@ type
     RollResult* = object
         rolls*: seq[int]
         modifier*: int
-        avg*: int
         value*: int
 
 let regex = "([0-9]*)d([0-9]*)[+]?([0-9]*)".re
 
 proc capturedInt(cap: string, orUse: int): int =
-  if cap != "": cap.parseInt()
-  else: orUse
+    if cap != "": cap.parseInt()
+    else: orUse
 
 proc rolling*(n:int, d:int, m:int): RollResult =
     result.rolls = @[]
     result.modifier = m
-    result.avg = n * (d/2).int + m
     result.value = 0
 
     for r in 0..(n-1):
@@ -35,12 +33,21 @@ proc rolling*(n:int, d:int, m:int): RollResult =
 
     return result
 
-proc roll*(rollDefn: string): RollResult =
+proc parseDefn(rollDefn: string): (int, int, int)=
     let matches = rollDefn.match(regex).get
-
     let n = capturedInt(matches.captures[0], 1)
     let d = matches.captures[1].parseInt()
     let m = capturedInt(matches.captures[2], 0)
+    return (n,d,m)
 
+proc roll*(rollDefn: string): RollResult =
+    let (n,d,m) = parseDefn(rollDefn)
     return rolling(n, d, m)
+
+proc average*(n:int, d:int, m:int): int =
+    return n * (d/2).int + m
+
+proc averageFromString*(rollDefn: string): int =
+    let (n,d,m) = parseDefn(rollDefn)
+    return average(n, d, m)
 
