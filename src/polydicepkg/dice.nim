@@ -1,5 +1,5 @@
 from os import paramStr, paramCount
-import strutils, random
+import strutils, random, math
 import nre except toSeq
 
 randomize()
@@ -45,7 +45,7 @@ proc roll*(rollDefn: string): RollResult =
     return rolling(n, d, m)
 
 proc average*(n:int, d:int, m:int): int =
-    return n * (d/2).int + m
+    return n * ceil(d/2).int + m
 
 proc averageFromString*(rollDefn: string): int =
     let (n,d,m) = parseDefn(rollDefn)
