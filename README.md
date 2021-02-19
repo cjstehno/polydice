@@ -48,8 +48,13 @@ then add three to it, yielding a value range of 5-27 with an average of 15.
 
 ## Module Usage
 
-> TBD...
+To install the package for your project run:
 
-import this file by writing `import polydicepkg/dice`
+    nimble install https://github.com/cjstehno/polydice
 
-see the module documentation for exposed features.
+Add the dependency:
+
+    requires "polydice >= 0.1.0"
+
+Then you can import the dice library by adding `import polydicepkg/dice` to your source file to begin using it. See the 
+module documentation for exposed features.
