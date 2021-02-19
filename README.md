@@ -4,7 +4,7 @@ A polyhedral dice roller tool and reusable Nim module package.
 
 ## Build
 
-> TBD...
+    nimble build -d:release
 
 ## Run Tests
 
@@ -12,11 +12,22 @@ A polyhedral dice roller tool and reusable Nim module package.
 
 ## Install
 
-> TBD...
+    nimble install
 
 ## Tool Usage
 
-> TBD...
+```
+A polyhedral dice roller.
+
+Usage:
+    polydice [-n=<num_rolls>] <roll_defn>
+    polydice (-h | --help)
+    polydice --version
+Options:
+    -n=<num_rolls>  The number of rolls to make (defaults to 1).
+    -h --help       Show this screen.
+    --version       Show version.
+```
 
 ## Module Usage
 
