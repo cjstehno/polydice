@@ -42,10 +42,14 @@ Rolling (15) 2d12+3...
 Where each roll is on a separate line, showing the total first followed by the individual rolls and modifier. The roll
 details are hidden by default (remove the `-d` or `--show-details` flag).
 
-The "dice definition" expression is in the format `NNdDDD+MM`
+The "dice definition" expression is in the format `NNdDDD(+/-)MM`, where N is the number of die rolls, D is the die to 
+be rolled, and M is the modifier to the roll. As an example (shown above) `2d12+3` would roll a d12 twice and 
+then add three to it, yielding a value range of 5-27 with an average of 15.
 
 ## Module Usage
 
 > TBD...
 
 import this file by writing `import polydicepkg/dice`
+
+see the module documentation for exposed features.

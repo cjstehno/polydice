@@ -5,7 +5,6 @@ import nre except toSeq
 randomize()
 
 # TODO: see if I can reduce the scope for the ints
-# TODO: module documentation
 
 type
     RollResult* = object
@@ -13,13 +12,14 @@ type
         modifier*: int
         value*: int
 
-let regex = "([0-9]*)d([0-9]*)[+]?([0-9]*)".re
+let regex = "([0-9]*)d([0-9]*)([+|-]?[0-9]*)".re
 
 proc capturedInt(cap: string, orUse: int): int =
     if cap != "": cap.parseInt()
     else: orUse
 
 proc rolling*(n:int, d:int, m:int): RollResult =
+    ## Rolls the `d` die `n` times and add the the `m` modifier to the total.
     result.rolls = @[]
     result.modifier = m
     result.value = 0
@@ -41,13 +41,16 @@ proc parseDefn(rollDefn: string): (int, int, int)=
     return (n,d,m)
 
 proc roll*(rollDefn: string): RollResult =
+    ## Parses the roll definition in the form `NNNdDDD(+/-)MMM` and then calls the rolling function with the values.
     let (n,d,m) = parseDefn(rollDefn)
     return rolling(n, d, m)
 
 proc average*(n:int, d:int, m:int): int =
+    ## Calculates the average value for the roll configuration.
     return n * ceil(d/2).int + m
 
 proc averageFromString*(rollDefn: string): int =
+    ## Calculates the average value for the roll definiation.
     let (n,d,m) = parseDefn(rollDefn)
     return average(n, d, m)
 

@@ -25,6 +25,7 @@ let numRolls = parseInt(if args["-n"]: $args["-n"] else: "1")
 for rn in 0..(numRolls-1):
     let result = roll(rollDefn)
     if args["--show-details"]:
-        echo "[", rn+1, "] ", result.value, "\t= (", join(result.rolls, " + "), ")\t+", result.modifier
+        let modifier = (if result.modifier >= 0: "+" else: "") & $result.modifier
+        echo "[", rn+1, "] ", result.value, "\t= (", join(result.rolls, " + "), ")\t", modifier
     else:
         echo "[", rn+1, "] ", result.value
