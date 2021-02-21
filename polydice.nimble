@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.1.0"
+version       = "0.2.0"
 author        = "Christopher J Stehno"
 description   = "A polyhedral dice roller and reusable module."
 license       = "Apache-2.0"

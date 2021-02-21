@@ -1,4 +1,3 @@
-from os import paramStr, paramCount
 import strutils, random, math
 import nre except toSeq
 
@@ -45,12 +44,12 @@ proc roll*(rollDefn: string): RollResult =
     let (n,d,m) = parseDefn(rollDefn)
     return rolling(n, d, m)
 
-proc average*(n:int, d:int, m:int): int =
+proc averageRoll*(n:int, d:int, m:int): int =
     ## Calculates the average value for the roll configuration.
     return n * ceil(d/2).int + m
 
-proc averageFromString*(rollDefn: string): int =
+proc averageRollFromString*(rollDefn: string): int =
     ## Calculates the average value for the roll definiation.
     let (n,d,m) = parseDefn(rollDefn)
-    return average(n, d, m)
+    return averageRoll(n, d, m)
 

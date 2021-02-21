@@ -3,19 +3,19 @@ import polydicepkg/dice
 
 suite "Testing dice":
     test "average from definition":
-        check averageFromString("d2") == 1
-        check averageFromString("d3") == 2
-        check averageFromString("d6") == 3
-        check averageFromString("2d6-1") == 5
-        check averageFromString("d12+1") == 7
-        check averageFromString("2d8+2") == 10
-        check averageFromString("2d100+5") == 105
+        check averageRollFromString("d2") == 1
+        check averageRollFromString("d3") == 2
+        check averageRollFromString("d6") == 3
+        check averageRollFromString("2d6-1") == 5
+        check averageRollFromString("d12+1") == 7
+        check averageRollFromString("2d8+2") == 10
+        check averageRollFromString("2d100+5") == 105
 
     test "average with values":
-        check average(1, 6, 0) == 3
-        check average(1, 12, 1) == 7
-        check average(2, 8, 2) == 10
-        check average(2, 6, -1) == 5
+        check averageRoll(1, 6, 0) == 3
+        check averageRoll(1, 12, 1) == 7
+        check averageRoll(2, 8, 2) == 10
+        check averageRoll(2, 6, -1) == 5
 
     test "roll from definition":
         var result = roll("d6")

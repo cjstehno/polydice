@@ -15,11 +15,11 @@ Options:
     --version           Show version.
 """
 
-let args = docopt(doc, version = "Polydice v0.1.0")
+let args = docopt(doc, version = "Polydice v0.2.0")
 
 let rollDefn = $args["<roll_defn>"]
 
-echo "Rolling (", averageFromString(rollDefn), ") ", rollDefn, "..."
+echo "Rolling (", averageRollFromString(rollDefn), ") ", rollDefn, "..."
 
 let numRolls = parseInt(if args["-n"]: $args["-n"] else: "1")
 for rn in 0..(numRolls-1):
